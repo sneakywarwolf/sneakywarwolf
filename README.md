@@ -1,12 +1,10 @@
 <div align="center">
 
-<a href="https://sneakywarwolf.github.io">
-  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=26&duration=2600&pause=900&color=00E5A0&center=true&vCenter=true&width=880&lines=Nirmal+Chakraborty+%7C+sneakywarwolf;Security+Analyst+%E2%80%94+Offensive+Security;Web+%2F+API+%2F+Mobile+%2F+Network+VAPT" alt="typing banner">
-</a>
-
-<br>
-
-<sub><i>Every expert was once a beginner</i></sub>
+<picture>
+  <source media="(prefers-color-scheme: dark)"  srcset="assets/banner-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="assets/banner-light.svg">
+  <img src="assets/banner-dark.svg" width="100%" alt="profile.sh --live">
+</picture>
 
 <br><br>
 
