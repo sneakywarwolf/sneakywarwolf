@@ -9,7 +9,7 @@
 <br>
 
 <a href="https://sneakywarwolf.github.io">
-  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=26&duration=2600&pause=900&color=00E5A0&center=true&vCenter=true&width=880&lines=Nirmal+-+Technical+Team+Lead;Security+Testing+%26+Risk+Advisory;Vulnerability+Management;Web+%2F+API+%2F+Mobile+%2F+Network+VAPT;Every+expert+was+once+a+beginner" alt="typing banner">
+  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=24&duration=2600&pause=900&color=00E5A0&center=true&vCenter=true&width=900&lines=Nirmal+-+Technical+Team+Lead;Security+Testing%2C+Risk+Advisory+%26+Vulnerability+Management;Web+%2F+API+%2F+Mobile+%2F+Network+VAPT;Every+expert+was+once+a+beginner" alt="typing banner">
 </a>
 
 <br>
