@@ -1,13 +1,18 @@
 <div align="center">
 
-<a href="https://github.com/sneakywarwolf">
-  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=26&duration=2600&pause=900&color=00E5A0&center=true&vCenter=true&width=880&lines=sneakywarwolf;Security+Analyst;VAPT+%2F+Web+%2F+Mobile+%2F+Network" alt="typing banner">
+<a href="https://sneakywarwolf.github.io">
+  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=26&duration=2600&pause=900&color=00E5A0&center=true&vCenter=true&width=880&lines=Nirmal+Chakraborty+%7C+sneakywarwolf;Security+Analyst+%E2%80%94+Offensive+Security;Web+%2F+API+%2F+Mobile+%2F+Network+VAPT" alt="typing banner">
 </a>
 
 <br>
 
-<a href="https://www.linkedin.com/in/sneakywarwolf"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>&nbsp;&nbsp;
-<a href="https://sneakywarwolf.github.io/sneakywarwolf/"><img src="https://img.shields.io/badge/Website-0d1117?style=for-the-badge&logo=github&logoColor=00e5a0" alt="Website"></a>
+<sub><i>Every expert was once a beginner</i></sub>
+
+<br><br>
+
+<a href="https://sneakywarwolf.github.io"><img src="https://img.shields.io/badge/Blog-0d1117?style=for-the-badge&logo=githubpages&logoColor=00e5a0" alt="Blog"></a>&nbsp;&nbsp;
+<a href="https://www.linkedin.com/in/nirmalchak/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>&nbsp;&nbsp;
+<a href="https://github.com/sneakywarwolf?tab=repositories"><img src="https://img.shields.io/badge/Repositories-0d1117?style=for-the-badge&logo=github&logoColor=00e5a0" alt="Repositories"></a>
 
 <br><br>
 
@@ -19,12 +24,13 @@
 
 ## This is me :)
 
-Hi, I'm a **security analyst** who likes finding what breaks before someone else does.
-I work on protecting systems, networks and data, and I'm always learning.
+Hi, I'm **Nirmal**, a security analyst focused on **offensive security**: web, API, mobile and network penetration testing, and helping development teams remediate what the testing finds.
 
-- 🔍 **Penetration testing** across web, mobile and network targets
-- 🏢 **Multiple onsite VAPT projects**
-- 🤝 **Working with developer teams** during audits to turn findings into fixes
+- 🔍 **Web & API** security testing
+- 📱 **Mobile** application penetration testing
+- 🛰️ **Network** VAPT and vulnerability assessments
+- 🏢 **On-site VAPT** engagements
+- 🧭 **Team handling & management**, plus remediation guidance for developers during audits
 
 <br>
 
@@ -32,34 +38,48 @@ I work on protecting systems, networks and data, and I'm always learning.
 
 ## certifications
 
-<img src="https://img.shields.io/badge/CRTE-0d1117?style=for-the-badge&logoColor=00e5a0" alt="CRTE">&nbsp;
-<img src="https://img.shields.io/badge/eWPTXv2-0d1117?style=for-the-badge&logoColor=00e5a0" alt="eWPTXv2">&nbsp;
-<img src="https://img.shields.io/badge/CEH_(Practical)-0d1117?style=for-the-badge&logoColor=00e5a0" alt="CEH Practical">
-
-</div>
-
----
-
-<div align="center">
-
-## what I do
-
-| 🌐 Web | 📱 Mobile | 🛰️ Network | 🛠️ Process |
-| :---: | :---: | :---: | :---: |
-| Application security testing | Mobile application pentest | Network security & vulnerability assessment | Security assessments, audits & remediation guidance |
-
-</div>
-
----
-
-<div align="center">
-
-## get in touch
-
-<a href="https://www.linkedin.com/in/sneakywarwolf"><img src="https://img.shields.io/badge/Say_hi_on-LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"></a>&nbsp;
-<a href="https://sneakywarwolf.github.io/sneakywarwolf/"><img src="https://img.shields.io/badge/Visit-sneakywarwolf.github.io-0d1117?style=flat-square&logo=github&logoColor=00e5a0" alt="Website"></a>
-
+<img src="https://img.shields.io/badge/CRTE-Altered_Security-0d1117?style=for-the-badge" alt="CRTE">
+<img src="https://img.shields.io/badge/eWPTXv2-INE-0d1117?style=for-the-badge" alt="eWPTXv2">
+<img src="https://img.shields.io/badge/CEH_(Practical)-EC--Council-0d1117?style=for-the-badge" alt="CEH Practical">
 <br>
+<img src="https://img.shields.io/badge/CC-ISC2-0d1117?style=for-the-badge" alt="ISC2 CC">
+<img src="https://img.shields.io/badge/DIAT-Information_Assurance_Professional-0d1117?style=for-the-badge" alt="DIAT">
+
+</div>
+
+---
+
+<div align="center">
+
+## projects
+
+| | Project | What it does | Stack |
+| :---: | :--- | :--- | :--- |
+| 🛰️ | [**ReconCraft**](https://github.com/sneakywarwolf/ReconCraft) | Modular recon and vulnerability-scanning framework with a PyQt5 GUI, plugin-based tool integration, parallel scans and an interactive CVSS v3.1 calculator | `Python` `PyQt5` |
+| 🔓 | [**PinSlayer**](https://github.com/sneakywarwolf/PinSlayer) | Frida-based SSL/TLS pinning bypass for Android, hooks trust mechanisms at runtime so HTTPS can be intercepted without repackaging the APK | `Frida` `Android` |
+| 🗺️ | [**SFAC**](https://github.com/sneakywarwolf/SFAC) | Subdomain Finder & Accessibility Checker: enumerates via Sublist3r, checks live hosts, captures screenshots, exports CSV | `Python` |
+
+</div>
+
+---
+
+<div align="center">
+
+## writing
+
+Notes and write-ups on [sneakywarwolf.github.io](https://sneakywarwolf.github.io)
+
+| Post | Topic |
+| :--- | :--- |
+| How AI Is Changing Software Testing and VAPT | AI / VAPT |
+| Response Manipulation: Bypassing Client-Side Trust Decisions | Web & mobile testing |
+| Avengers Blog Writeup, TryHackMe | VAPT walkthrough |
+
+</div>
+
+---
+
+<div align="center">
 
 <sub>`Let's make the digital world a safer place`</sub>
 
