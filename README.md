@@ -9,7 +9,7 @@
 <br>
 
 <a href="https://sneakywarwolf.github.io">
-  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=26&duration=2600&pause=900&color=00E5A0&center=true&vCenter=true&width=880&lines=Nirmal+-+Technical+Team+Lead+%7C+Offensive+Security;Web+%2F+API+%2F+Mobile+%2F+Network+VAPT;Every+expert+was+once+a+beginner" alt="typing banner">
+  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=26&duration=2600&pause=900&color=00E5A0&center=true&vCenter=true&width=880&lines=Nirmal+-+Technical+Team+Lead;Security+Testing+%26+Risk+Advisory;Vulnerability+Management;Web+%2F+API+%2F+Mobile+%2F+Network+VAPT;Every+expert+was+once+a+beginner" alt="typing banner">
 </a>
 
 <br>
@@ -28,7 +28,7 @@
 
 ## This is me :)
 
-Hi, I'm **Nirmal**, a **technical team lead** in offensive security. I lead VAPT teams from scoping to sign-off: keeping people aligned, stakeholders informed and engagements delivered on time, while staying hands-on across web, API, mobile and network testing.
+Hi, I'm **Nirmal**, a **technical team lead** across **security testing, risk advisory and vulnerability management**. I lead VAPT teams from scoping to sign-off: keeping people aligned, stakeholders informed and engagements delivered on time, while staying hands-on across web, API, mobile and network testing.
 
 **Leadership**
 - **People first**: leading, mentoring and unblocking security testing teams

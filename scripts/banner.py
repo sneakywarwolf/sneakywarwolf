@@ -16,7 +16,8 @@ W, H = 848, 428
 INFO = [
     ("Subject", "Nirmal Chakraborty"),
     ("Handle", "sneakywarwolf"),
-    ("Role", "Technical Team Lead · Offensive Security"),
+    ("Role", "Technical Team Lead"),
+    ("Domain", "Security Testing · Risk Advisory · Vuln Mgmt"),
     ("Focus", "Web · API · Mobile · Network VAPT"),
     ("Certs", "CRTE · eWPTXv2 · CEH(P) · CC · DIAT"),
     ("Status", "Testing + Learning + Evolving"),
@@ -186,7 +187,7 @@ def build(name, t):
         vx = right_x + right_w - 6 - len(v) * 7.1 - 10
         if vx > kx:
             a(f'<line x1="{kx:.0f}" y1="{y-3}" x2="{vx:.0f}" y2="{y-3}" stroke="{t["dim"]}" stroke-opacity=".5" stroke-dasharray="1 4"/>')
-        y += 17.5
+        y += 16.5
     # footer
     a(f'<line x1="{right_x+4}" y1="368" x2="{right_x+right_w-4}" y2="368" stroke="{t["stroke"]}"/>')
     a(f'<circle cx="{right_x+8}" cy="383" r="2.5" fill="{t["ok"]}"/>')
