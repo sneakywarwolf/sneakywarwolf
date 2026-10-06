@@ -31,16 +31,16 @@
 Hi, I'm **Nirmal**, a **technical team lead** in offensive security. I lead VAPT teams from scoping to sign-off: keeping people aligned, stakeholders informed and engagements delivered on time, while staying hands-on across web, API, mobile and network testing.
 
 **Leadership**
-- 👥 **People first**: leading, mentoring and unblocking security testing teams
-- 🗣️ **Clear communication** with clients, stakeholders and development teams, from kickoff to final report
-- ⏱️ **Timely delivery**: planning, prioritising and tracking engagements to committed deadlines
-- 🧭 **Remediation ownership**: turning findings into fixes alongside developers during audits
+- **People first**: leading, mentoring and unblocking security testing teams
+- **Clear communication** with clients, stakeholders and development teams, from kickoff to final report
+- **Timely delivery**: planning, prioritising and tracking engagements to committed deadlines
+- **Remediation ownership**: turning findings into fixes alongside developers during audits
 
 **Hands-on**
-- 🔍 Web & API security testing
-- 📱 Mobile application penetration testing
-- 🛰️ Network VAPT and vulnerability assessments
-- 🏢 On-site VAPT engagements
+- Web & API security testing
+- Mobile application penetration testing
+- Network VAPT and vulnerability assessments
+- On-site VAPT engagements
 
 <br>
 
