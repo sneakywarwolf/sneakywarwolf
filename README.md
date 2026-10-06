@@ -42,12 +42,13 @@ Hi, I'm **Nirmal**, a security analyst focused on **offensive security**: web, A
 
 ## certifications
 
-<img src="https://img.shields.io/badge/CRTE-Altered_Security-0d1117?style=for-the-badge" alt="CRTE">
-<img src="https://img.shields.io/badge/eWPTXv2-INE-0d1117?style=for-the-badge" alt="eWPTXv2">
-<img src="https://img.shields.io/badge/CEH_(Practical)-EC--Council-0d1117?style=for-the-badge" alt="CEH Practical">
-<br>
-<img src="https://img.shields.io/badge/CC-ISC2-0d1117?style=for-the-badge" alt="ISC2 CC">
-<img src="https://img.shields.io/badge/DIAT-Information_Assurance_Professional-0d1117?style=for-the-badge" alt="DIAT">
+<!-- SITE:CERTS:START -->
+<img src="https://img.shields.io/badge/DIAT-Information_Assurance_Professional-0d1117?style=for-the-badge" alt="DIAT - Information Assurance Professional">
+<img src="https://img.shields.io/badge/CEH(Practical)-EC_Council-0d1117?style=for-the-badge" alt="CEH(Practical) - EC Council">
+<img src="https://img.shields.io/badge/INE-eWPTXv2_(Web_Application_Penetration_Tester_eXtreme)-0d1117?style=for-the-badge" alt="INE - eWPTXv2 (Web Application Penetration Tester eXtreme)">
+<img src="https://img.shields.io/badge/ISC2-Certified_in_Cybersecurity_(CC)-0d1117?style=for-the-badge" alt="ISC2 - Certified in Cybersecurity (CC)">
+<img src="https://img.shields.io/badge/CRTE-Altered_Security-0d1117?style=for-the-badge" alt="CRTE - Altered Security">
+<!-- SITE:CERTS:END -->
 
 </div>
 
@@ -57,11 +58,13 @@ Hi, I'm **Nirmal**, a security analyst focused on **offensive security**: web, A
 
 ## projects
 
-| | Project | What it does | Stack |
-| :---: | :--- | :--- | :--- |
-| 🛰️ | [**ReconCraft**](https://github.com/sneakywarwolf/ReconCraft) | Modular recon and vulnerability-scanning framework with a PyQt5 GUI, plugin-based tool integration, parallel scans and an interactive CVSS v3.1 calculator | `Python` `PyQt5` |
-| 🔓 | [**PinSlayer**](https://github.com/sneakywarwolf/PinSlayer) | Frida-based SSL/TLS pinning bypass for Android, hooks trust mechanisms at runtime so HTTPS can be intercepted without repackaging the APK | `Frida` `Android` |
-| 🗺️ | [**SFAC**](https://github.com/sneakywarwolf/SFAC) | Subdomain Finder & Accessibility Checker: enumerates via Sublist3r, checks live hosts, captures screenshots, exports CSV | `Python` |
+<!-- SITE:PROJECTS:START -->
+| Project | What it does | Stack |
+| :--- | :--- | :--- |
+| [**ReconCraft**](https://github.com/sneakywarwolf/ReconCraft) | Modular reconnaissance and vulnerability-scanning framework with a PyQt5 GUI. Plugin-based tool integration, parallel scanning, custom scan profiles, dashboards and an interactive CVSS v3.1 calculator. | `Python` `PyQt5` `Recon` `Linux` |
+| [**PinSlayer**](https://github.com/sneakywarwolf/PinSlayer) | Frida-based SSL/TLS pinning bypass framework for Android. Hooks TrustManager, HostnameVerifier and related trust mechanisms at runtime to enable HTTPS interception without repackaging the APK. | `Frida` `Android` `Mobile Pentest` |
+| [**SFAC**](https://github.com/sneakywarwolf/SFAC) | Subdomain Finder & Accessibility Checker. Enumerates subdomains via Sublist3r, checks which are live, captures headless screenshots and exports results to CSV. | `Python` `Recon` `Subdomains` |
+<!-- SITE:PROJECTS:END -->
 
 </div>
 
@@ -71,13 +74,17 @@ Hi, I'm **Nirmal**, a security analyst focused on **offensive security**: web, A
 
 ## writing
 
-Notes and write-ups on [sneakywarwolf.github.io](https://sneakywarwolf.github.io)
+Latest from [sneakywarwolf.github.io](https://sneakywarwolf.github.io)
 
-| Post | Topic |
-| :--- | :--- |
-| How AI Is Changing Software Testing and VAPT | AI / VAPT |
-| Response Manipulation: Bypassing Client-Side Trust Decisions | Web & mobile testing |
-| Avengers Blog Writeup, TryHackMe | VAPT walkthrough |
+<!-- SITE:WRITING:START -->
+| Post | Date | Topic |
+| :--- | :---: | :--- |
+| [How AI Is Changing Software Testing and VAPT](https://sneakywarwolf.github.io/posts/AI-Changing-Testing-Grounds/) | 2026-09-26 | Security / VAPT / AI |
+| [The Environmental Consequences of the AI Boom](https://sneakywarwolf.github.io/posts/Environmental-Consequences-AI/) | 2026-09-20 | Technology / AI / Sustainability |
+| [Token-Efficient AI- Headroom, Claude-Mem, and Context Engineering](https://sneakywarwolf.github.io/posts/Token-Efficient-Context-Engineering/) | 2026-09-19 | Technology / AI |
+| [AI Skills, Plugins, and the Agent Stack- How the Right Combination Gets Work Done](https://sneakywarwolf.github.io/posts/AI-Skill-Plugins/) | 2026-09-18 | Technology / AI |
+| [Task-Model-Tool Alignment: Choosing the Right AI Architecture](https://sneakywarwolf.github.io/posts/choosing-the-right-model-for-the-right-task/) | 2026-09-17 | AI / LLM / Engineering |
+<!-- SITE:WRITING:END -->
 
 </div>
 
