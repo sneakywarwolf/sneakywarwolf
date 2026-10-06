@@ -2,13 +2,18 @@
 """Generate assets/banner-{dark,light}.svg (terminal-style profile card).
 
 Edit INFO below and re-run:  python3 scripts/banner.py
+(writes assets/banner-<theme>.<hash>.svg and points README.md at the new files)
 The VISUAL.MAP portrait comes from assets/portrait-points.json (scripts/portrait.py).
 Its dots follow a finding through vulnerability management, then settle on the portrait:
 noise -> crosshair (discover) -> bug (find) -> severity bars (assess)
       -> shield with keyhole -> shield with checkmark (fix) -> portrait.
 """
+import glob
+import hashlib
 import json
 import math
+import os
+import re
 import random
 from html import escape
 
@@ -263,8 +268,19 @@ def build(name, t):
     a(f'<text x="{right_x+16}" y="386" font-size="9" font-weight="700" fill="{t["ok"]}">EVERY EXPERT WAS ONCE A BEGINNER</text>')
     a(f'<text x="{right_x+right_w-6}" y="386" text-anchor="end" font-size="9" fill="{t["dim"]}">UTC+5:30 · IST</text>')
     a('</svg>')
-    open(f"assets/banner-{name}.svg", "w").write("".join(o))
+    svg = "".join(o)
+    # content-hashed filename so GitHub/browser caches can't keep serving an old banner
+    path = f"assets/banner-{name}.{hashlib.sha1(svg.encode()).hexdigest()[:8]}.svg"
+    for old in glob.glob(f"assets/banner-{name}*.svg"):
+        if old != path:
+            os.remove(old)
+    open(path, "w").write(svg)
+    return path
 
 
-for n, t in THEMES.items():
-    build(n, t)
+paths = {n: build(n, t) for n, t in THEMES.items()}
+readme = open("README.md", encoding="utf-8").read()
+for n, p in paths.items():
+    readme = re.sub(rf"assets/banner-{n}[^\"]*\.svg", p, readme)
+open("README.md", "w", encoding="utf-8").write(readme)
+print(paths)
