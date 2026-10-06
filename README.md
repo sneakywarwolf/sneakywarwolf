@@ -9,7 +9,7 @@
 <br>
 
 <a href="https://sneakywarwolf.github.io">
-  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=26&duration=2600&pause=900&color=00E5A0&center=true&vCenter=true&width=880&lines=Nirmal+-+Security+Analyst+%26+Offensive+Security;Web+%2F+API+%2F+Mobile+%2F+Network+VAPT;Every+expert+was+once+a+beginner" alt="typing banner">
+  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=26&duration=2600&pause=900&color=00E5A0&center=true&vCenter=true&width=880&lines=Nirmal+-+Technical+Team+Lead+%7C+Offensive+Security;Web+%2F+API+%2F+Mobile+%2F+Network+VAPT;Every+expert+was+once+a+beginner" alt="typing banner">
 </a>
 
 <br>
@@ -28,13 +28,19 @@
 
 ## This is me :)
 
-Hi, I'm **Nirmal**, a security analyst focused on **offensive security**: web, API, mobile and network penetration testing, and helping development teams remediate what the testing finds.
+Hi, I'm **Nirmal**, a **technical team lead** in offensive security. I lead VAPT teams from scoping to sign-off: keeping people aligned, stakeholders informed and engagements delivered on time, while staying hands-on across web, API, mobile and network testing.
 
-- 🔍 **Web & API** security testing
-- 📱 **Mobile** application penetration testing
-- 🛰️ **Network** VAPT and vulnerability assessments
-- 🏢 **On-site VAPT** engagements
-- 🧭 **Team handling & management**, plus remediation guidance for developers during audits
+**Leadership**
+- 👥 **People first**: leading, mentoring and unblocking security testing teams
+- 🗣️ **Clear communication** with clients, stakeholders and development teams, from kickoff to final report
+- ⏱️ **Timely delivery**: planning, prioritising and tracking engagements to committed deadlines
+- 🧭 **Remediation ownership**: turning findings into fixes alongside developers during audits
+
+**Hands-on**
+- 🔍 Web & API security testing
+- 📱 Mobile application penetration testing
+- 🛰️ Network VAPT and vulnerability assessments
+- 🏢 On-site VAPT engagements
 
 <br>
 
