@@ -18,10 +18,6 @@
 <a href="https://www.linkedin.com/in/nirmalchak/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>&nbsp;&nbsp;
 <a href="https://github.com/sneakywarwolf?tab=repositories"><img src="https://img.shields.io/badge/Repositories-0d1117?style=for-the-badge&logo=github&logoColor=00e5a0" alt="Repositories"></a>
 
-<br><br>
-
-<img src="https://komarev.com/ghpvc/?username=sneakywarwolf&style=flat&color=00e5a0&label=profile+views" alt="profile views">
-
 </div>
 
 ---
