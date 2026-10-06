@@ -2,8 +2,12 @@
 """Generate assets/banner-{dark,light}.svg (terminal-style profile card).
 
 Edit INFO below and re-run:  python3 scripts/banner.py
+The VISUAL.MAP portrait comes from assets/portrait-points.json (scripts/portrait.py).
+Its dots loop: static noise -> shield with keyhole -> network mesh -> portrait.
 """
+import json
 import math
+import random
 from html import escape
 
 W, H = 848, 428
@@ -38,6 +42,65 @@ BAYER = [[0, 32, 8, 40, 2, 34, 10, 42], [48, 16, 56, 24, 50, 18, 58, 26],
          [12, 44, 4, 36, 14, 46, 6, 38], [60, 28, 52, 20, 62, 30, 54, 22],
          [3, 35, 11, 43, 1, 33, 9, 41], [51, 19, 59, 27, 49, 17, 57, 25],
          [15, 47, 7, 39, 13, 45, 5, 37], [63, 31, 55, 23, 61, 29, 53, 21]]
+
+
+BOX_W, BOX_H = 250, 254     # VISUAL.MAP drawing area (matches scripts/portrait.py)
+LOOP = 18                   # seconds per animation cycle
+# keyTimes for: noise, shield, shield, mesh, mesh, portrait, portrait, noise
+KEYTIMES = "0;.08;.24;.32;.46;.56;.94;1"
+
+
+def hilbert(x, y, n=256):
+    """Hilbert-curve index; sorting every stage by it keeps each dot's path short."""
+    d, s = 0, n // 2
+    x, y = int(max(0, min(n - 1, x))), int(max(0, min(n - 1, y)))
+    while s:
+        rx, ry = int(x & s > 0), int(y & s > 0)
+        d += s * s * ((3 * rx) ^ ry)
+        if ry == 0:
+            if rx == 1:
+                x, y = s - 1 - x, s - 1 - y
+            x, y = y, x
+        s //= 2
+    return d
+
+
+def ordered(pts):
+    return sorted(pts, key=lambda p: hilbert(p[0] * 255 / BOX_W, p[1] * 255 / BOX_H))
+
+
+def resample(pts, n):
+    """Return exactly n points from pts, evenly picked along the Hilbert order."""
+    pts = ordered(pts)
+    return [pts[int(i * len(pts) / n)] for i in range(n)]
+
+
+def mesh_dots():
+    """Network graph: hub, inner ring, outer ring, joined by dotted links."""
+    cx, cy = BOX_W / 2, BOX_H / 2
+    nodes = [(cx, cy)]
+    nodes += [(cx + 62 * math.cos(a), cy + 62 * math.sin(a)) for a in (math.pi / 3 * k + math.pi / 6 for k in range(6))]
+    nodes += [(cx + 112 * math.cos(a), cy + 112 * math.sin(a)) for a in (math.pi / 3 * k for k in range(6))]
+    links = [(0, i) for i in range(1, 7)]
+    links += [(i, i % 6 + 1) for i in range(1, 7)]
+    links += [(7 + k, 1 + k) for k in range(6)] + [(7 + k, 1 + (k - 1) % 6) for k in range(6)]
+    pts = []
+    for a, b in links:
+        (x0, y0), (x1, y1) = nodes[a], nodes[b]
+        steps = int(math.hypot(x1 - x0, y1 - y0) / 3.2)
+        pts += [(x0 + (x1 - x0) * t / steps, y0 + (y1 - y0) * t / steps) for t in range(steps + 1)]
+    for i, (x, y) in enumerate(nodes):
+        r = 11 if i == 0 else 7
+        for gx in range(-r, r + 1, 2):
+            for gy in range(-r, r + 1, 2):
+                if gx * gx + gy * gy <= r * r:
+                    pts.append((x + gx, y + gy))
+    return pts
+
+
+def noise_dots(n, seed=7):
+    rnd = random.Random(seed)
+    return [(rnd.uniform(0, BOX_W), rnd.uniform(0, BOX_H)) for _ in range(n)]
 
 
 def shield_dots(w, h, step=3.4):
@@ -84,20 +147,29 @@ def build(name, t):
     for x, w in ((left_x - 4, left_w + 8), (right_x - 4, right_w + 8)):
         a(f'<rect x="{x}" y="58" width="{w}" height="340" rx="6" fill="{t["panel"]}" stroke="{t["stroke"]}"/>')
     a(f'<text x="{left_x+6}" y="80" font-size="11" font-weight="700" fill="{t["accent"]}">VISUAL.MAP</text>')
-    a(f'<text x="{left_x+left_w-2}" y="80" text-anchor="end" font-size="9" fill="{t["dim"]}">shield / 1-BIT</text>')
-    # shield
+    a(f'<text x="{left_x+left_w-2}" y="80" text-anchor="end" font-size="9" fill="{t["dim"]}">250×254 / 1-BIT</text>')
+    # morphing dots: static fallback is the portrait; transforms carry the other stages
+    ox, oy = left_x + (left_w - BOX_W) / 2, left_y + 36
+    portrait = ordered([tuple(p) for p in json.load(open("assets/portrait-points.json"))[name]])
+    n = len(portrait)
     sw, sh = 190, 215
-    ox, oy = left_x + (left_w - sw) / 2, left_y + 48
-    pts = shield_dots(sw, sh)
+    shield = resample([(x + (BOX_W - sw) / 2, y + (BOX_H - sh) / 2) for x, y in shield_dots(sw, sh)], n)
+    stages = [resample(noise_dots(n), n), shield, resample(mesh_dots(), n)]
     a(f'<g fill="{t["dots"]}" fill-opacity="{t["dot_op"]}">')
-    a("".join(f'<circle cx="{ox+x:.1f}" cy="{oy+y:.1f}" r="1.15"/>' for x, y in pts))
+    for i, (px, py) in enumerate(portrait):
+        nz, sd, ms = (st[i] for st in stages)
+        d = lambda q: f"{q[0]-px:.0f} {q[1]-py:.0f}"
+        vals = f"{d(nz)};{d(sd)};{d(sd)};{d(ms)};{d(ms)};0 0;0 0;{d(nz)}"
+        a(f'<circle cx="{ox+px:.1f}" cy="{oy+py:.1f}" r="1.05"><animateTransform attributeName="transform" '
+          f'type="translate" dur="{LOOP}s" repeatCount="indefinite" keyTimes="{KEYTIMES}" values="{vals}"/></circle>')
     a('</g>')
+    pts = portrait
     # corner brackets
     bx0, by0, bx1, by1, L = left_x + 8, left_y + 36, left_x + left_w - 8, left_y + left_h - 38, 14
     a(f'<g stroke="{t["accent"]}" stroke-width="1.5" fill="none">'
       f'<path d="M{bx0} {by0+L}V{by0}H{bx0+L}"/><path d="M{bx1-L} {by0}H{bx1}V{by0+L}"/>'
       f'<path d="M{bx0} {by1-L}V{by1}H{bx0+L}"/><path d="M{bx1-L} {by1}H{bx1}V{by1-L}"/></g>')
-    a(f'<text x="{left_x+6}" y="{left_y+left_h-8}" font-size="9" fill="{t["dim"]}">PTS {len(pts)} · SNEAKYWARWOLF</text>')
+    a(f'<text x="{left_x+6}" y="{left_y+left_h-8}" font-size="9" fill="{t["dim"]}">PTS {len(pts)} · FS/HILBERT</text>')
     # right header
     a(f'<text x="{right_x+6}" y="80" font-size="11" font-weight="700" fill="{t["accent"]}">SYSTEM.INFO</text>')
     a(f'<circle class="live" cx="{right_x+300}" cy="76" r="3" fill="{t["live"]}"/>')
