@@ -19,7 +19,7 @@ INFO = [
     ("Role", "Security Analyst · Offensive Security"),
     ("Focus", "Web · API · Mobile · Network VAPT"),
     ("Certs", "CRTE · eWPTXv2 · CEH(P) · CC · DIAT"),
-    ("Status", "Testing + Learning + Shipping"),
+    ("Status", "Testing + Learning + Evolving"),
     ("Tool.Recon", "ReconCraft · SFAC"),
     ("Tool.Mobile", "PinSlayer (Frida)"),
     ("Core.Lang", "Python"),
