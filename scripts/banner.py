@@ -3,7 +3,9 @@
 
 Edit INFO below and re-run:  python3 scripts/banner.py
 The VISUAL.MAP portrait comes from assets/portrait-points.json (scripts/portrait.py).
-Its dots loop: static noise -> shield with keyhole -> network mesh -> portrait.
+Its dots follow a finding through vulnerability management, then settle on the portrait:
+noise -> crosshair (discover) -> bug (find) -> severity bars (assess)
+      -> shield with keyhole -> shield with checkmark (fix) -> portrait.
 """
 import json
 import math
@@ -47,9 +49,11 @@ BAYER = [[0, 32, 8, 40, 2, 34, 10, 42], [48, 16, 56, 24, 50, 18, 58, 26],
 
 
 BOX_W, BOX_H = 250, 254     # VISUAL.MAP drawing area (matches scripts/portrait.py)
-LOOP = 18                   # seconds per animation cycle
-# keyTimes for: noise, shield, shield, mesh, mesh, portrait, portrait, noise
-KEYTIMES = "0;.08;.24;.32;.46;.56;.94;1"
+LOOP = 26                   # seconds per animation cycle
+# (arrive, leave) for each shape, as fractions of LOOP; the portrait holds ~36% of the loop
+TIMELINE = [("crosshair", .045, .12), ("bug", .165, .24), ("bars", .285, .36),
+            ("shield", .405, .46), ("check", .49, .55), ("portrait", .60, .96)]
+KEYTIMES = ";".join(["0"] + [f"{k:g}" for _, a, b in TIMELINE for k in (a, b)] + ["1"])
 
 
 def hilbert(x, y, n=256):
@@ -77,26 +81,71 @@ def resample(pts, n):
     return [pts[int(i * len(pts) / n)] for i in range(n)]
 
 
-def mesh_dots():
-    """Network graph: hub, inner ring, outer ring, joined by dotted links."""
-    cx, cy = BOX_W / 2, BOX_H / 2
-    nodes = [(cx, cy)]
-    nodes += [(cx + 62 * math.cos(a), cy + 62 * math.sin(a)) for a in (math.pi / 3 * k + math.pi / 6 for k in range(6))]
-    nodes += [(cx + 112 * math.cos(a), cy + 112 * math.sin(a)) for a in (math.pi / 3 * k for k in range(6))]
-    links = [(0, i) for i in range(1, 7)]
-    links += [(i, i % 6 + 1) for i in range(1, 7)]
-    links += [(7 + k, 1 + k) for k in range(6)] + [(7 + k, 1 + (k - 1) % 6) for k in range(6)]
+def fill(inside, step=3.4, density=lambda x, y: 1.0):
+    """Grid points inside a region, thinned by an ordered dither of density(x, y)."""
     pts = []
-    for a, b in links:
-        (x0, y0), (x1, y1) = nodes[a], nodes[b]
-        steps = int(math.hypot(x1 - x0, y1 - y0) / 3.2)
-        pts += [(x0 + (x1 - x0) * t / steps, y0 + (y1 - y0) * t / steps) for t in range(steps + 1)]
-    for i, (x, y) in enumerate(nodes):
-        r = 11 if i == 0 else 7
-        for gx in range(-r, r + 1, 2):
-            for gy in range(-r, r + 1, 2):
-                if gx * gx + gy * gy <= r * r:
-                    pts.append((x + gx, y + gy))
+    for j in range(int(BOX_H / step) + 1):
+        for i in range(int(BOX_W / step) + 1):
+            x, y = i * step, j * step
+            if inside(x, y) and density(x, y) * 64 > BAYER[j % 8][i % 8]:
+                pts.append((x, y))
+    return pts
+
+
+def line(x0, y0, x1, y1, gap=3.2):
+    n = max(1, int(math.hypot(x1 - x0, y1 - y0) / gap))
+    return [(x0 + (x1 - x0) * t / n, y0 + (y1 - y0) * t / n) for t in range(n + 1)]
+
+
+def ring(cx, cy, r, gap=3.2):
+    n = max(8, int(2 * math.pi * r / gap))
+    return [(cx + r * math.cos(2 * math.pi * k / n), cy + r * math.sin(2 * math.pi * k / n)) for k in range(n)]
+
+
+def crosshair_dots():
+    """Recon reticle: three rings, cross hairs with a centre gap, tick marks and a target blip."""
+    cx, cy = BOX_W / 2, BOX_H / 2
+    pts = ring(cx, cy, 112) + ring(cx, cy, 76, 4) + ring(cx, cy, 40, 4.5)
+    for d in (1, -1):
+        pts += line(cx + d * 18, cy, cx + d * 118, cy) + line(cx, cy + d * 18, cx, cy + d * 118)
+    for k in range(24):
+        a = 2 * math.pi * k / 24
+        pts += line(cx + 104 * math.cos(a), cy + 104 * math.sin(a), cx + 112 * math.cos(a), cy + 112 * math.sin(a), 2.5)
+    bx, by = cx + 48, cy - 34
+    pts += fill(lambda x, y: math.hypot(x - bx, y - by) < 8, 2.2) + ring(bx, by, 14, 3.5)
+    return pts
+
+
+def bug_dots():
+    """Beetle: dithered head and body, split wing line, six legs, two antennae."""
+    cx, cy = BOX_W / 2, BOX_H / 2 + 14
+    body = lambda x, y: ((x - cx) / 52) ** 2 + ((y - cy) / 70) ** 2 <= 1
+    head = lambda x, y: math.hypot(x - cx, y - (cy - 88)) <= 24
+    pts = fill(lambda x, y: (body(x, y) and abs(x - cx) > 2.5) or head(x, y),
+               density=lambda x, y: 0.55 + 0.4 * (x < cx))
+    for side in (1, -1):
+        for k, (y0, dy) in enumerate(((cy - 38, -30), (cy, 0), (cy + 38, 30))):
+            x0 = cx + side * 48
+            kx, ky = x0 + side * 34, y0 + dy * 0.4 - 6
+            pts += line(x0, y0, kx, ky) + line(kx, ky, kx + side * 22, ky + dy * 0.9 + 18)
+        hx, hy = cx + side * 10, cy - 108
+        pts += line(hx, hy, hx + side * 22, hy - 26) + line(hx + side * 22, hy - 26, hx + side * 40, hy - 30)
+    return pts
+
+
+def bars_dots():
+    """Severity chart: Critical / High / Medium / Low bars, falling height and density, on an axis."""
+    base, w, gap = BOX_H - 26, 40, 16
+    x0 = (BOX_W - (4 * w + 3 * gap)) / 2
+    heights, dens = (196, 146, 98, 56), (1.0, 0.78, 0.58, 0.42)
+    bars = [(x0 + k * (w + gap), base - h, d) for k, (h, d) in enumerate(zip(heights, dens))]
+    def which(x, y):
+        for bx, top, d in bars:
+            if bx <= x <= bx + w and top <= y <= base - 6:
+                return d
+        return 0
+    pts = fill(lambda x, y: which(x, y) > 0, 3.0, which)
+    pts += line(x0 - 14, base, x0 + 4 * w + 3 * gap + 14, base, 2.8)
     return pts
 
 
@@ -105,8 +154,14 @@ def noise_dots(n, seed=7):
     return [(rnd.uniform(0, BOX_W), rnd.uniform(0, BOX_H)) for _ in range(n)]
 
 
-def shield_dots(w, h, step=3.4):
-    """Dithered shield with a keyhole cut-out. Returns [(x, y)] in 0..w, 0..h."""
+def seg_dist(px, py, ax, ay, bx, by):
+    dx, dy = bx - ax, by - ay
+    t = max(0.0, min(1.0, ((px - ax) * dx + (py - ay) * dy) / (dx * dx + dy * dy)))
+    return math.hypot(px - ax - t * dx, py - ay - t * dy)
+
+
+def shield_dots(w, h, step=3.4, cut="keyhole"):
+    """Dithered shield with a keyhole or checkmark cut-out. Returns [(x, y)] in 0..w, 0..h."""
     pts = []
     cols, rows = int(w / step), int(h / step)
     for j in range(rows):
@@ -118,11 +173,15 @@ def shield_dots(w, h, step=3.4):
                 half *= 0.9 + abs(u) * 0.0
             if abs(u) > half * 0.92:
                 continue
-            # keyhole
-            if math.hypot(u, (v - 0.40) * 1.15) < 0.17:
-                continue
-            if abs(u) < 0.07 + (v - 0.45) * 0.12 and 0.45 <= v < 0.68:
-                continue
+            if cut == "keyhole":
+                if math.hypot(u, (v - 0.40) * 1.15) < 0.17:
+                    continue
+                if abs(u) < 0.07 + (v - 0.45) * 0.12 and 0.45 <= v < 0.68:
+                    continue
+            else:                                  # checkmark, in shield units (v scaled to match u)
+                p = (u, v * 2.2)
+                if min(seg_dist(*p, -0.45, 0.95, -0.12, 1.32), seg_dist(*p, -0.12, 1.32, 0.48, 0.55)) < 0.11:
+                    continue
             edge = 1 - abs(u) / (half * 0.92 + 1e-9)
             light = 0.35 + 0.45 * (1 - (u + 1) / 2) * (1 - v * 0.6) + 0.3 * (edge < 0.08)
             if light * 64 > BAYER[j % 8][i % 8]:
@@ -155,16 +214,26 @@ def build(name, t):
     portrait = ordered([tuple(p) for p in json.load(open("assets/portrait-points.json"))[name]])
     n = len(portrait)
     sw, sh = 190, 215
-    shield = resample([(x + (BOX_W - sw) / 2, y + (BOX_H - sh) / 2) for x, y in shield_dots(sw, sh)], n)
-    stages = [resample(noise_dots(n), n), shield, resample(mesh_dots(), n)]
+    centre = lambda pts: [(x + (BOX_W - sw) / 2, y + (BOX_H - sh) / 2) for x, y in pts]
+    shapes = {"crosshair": crosshair_dots(), "bug": bug_dots(), "bars": bars_dots(),
+              "shield": centre(shield_dots(sw, sh)), "check": centre(shield_dots(sw, sh, cut="check"))}
+    noise = resample(noise_dots(n), n)
+    stages = [resample(shapes[k], n) for k, _, _ in TIMELINE if k != "portrait"]
     a(f'<g fill="{t["dots"]}" fill-opacity="{t["dot_op"]}">')
     for i, (px, py) in enumerate(portrait):
-        nz, sd, ms = (st[i] for st in stages)
         d = lambda q: f"{q[0]-px:.0f} {q[1]-py:.0f}"
-        vals = f"{d(nz)};{d(sd)};{d(sd)};{d(ms)};{d(ms)};0 0;0 0;{d(nz)}"
+        hold = [d(st[i]) for st in stages for _ in (0, 1)]
+        vals = ";".join([d(noise[i])] + hold + ["0 0", "0 0", d(noise[i])])
         a(f'<circle cx="{ox+px:.1f}" cy="{oy+py:.1f}" r="1.05"><animateTransform attributeName="transform" '
           f'type="translate" dur="{LOOP}s" repeatCount="indefinite" keyTimes="{KEYTIMES}" values="{vals}"/></circle>')
     a('</g>')
+    # scan line sweeping the drawing area
+    sweep = f'dur="{LOOP / 8:g}s" repeatCount="indefinite"'
+    a(f'<defs><linearGradient id="scan" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="{t["accent"]}" '
+      f'stop-opacity="0"/><stop offset="1" stop-color="{t["accent"]}" stop-opacity=".22"/></linearGradient></defs>')
+    a(f'<g><animateTransform attributeName="transform" type="translate" values="0 {-24};0 {BOX_H}" {sweep}/>'
+      f'<rect x="{ox-8}" y="{oy}" width="{BOX_W+16}" height="22" fill="url(#scan)"/>'
+      f'<rect x="{ox-8}" y="{oy+22}" width="{BOX_W+16}" height="1.2" fill="{t["accent"]}" fill-opacity=".55"/></g>')
     pts = portrait
     # corner brackets
     bx0, by0, bx1, by1, L = left_x + 8, left_y + 36, left_x + left_w - 8, left_y + left_h - 38, 14
