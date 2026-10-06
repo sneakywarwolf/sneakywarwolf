@@ -1,54 +1,66 @@
-# Security Analyst 👨‍💻🔒
+<div align="center">
 
-## Introduction
-👋 Hello! I'm a security analyst with a passion for keeping digital environments secure. I have a strong background in cybersecurity principles and hands-on experience in protecting systems, networks, and data from potential threats. I am constantly striving to learn and improve my skills.
+<a href="https://github.com/sneakywarwolf">
+  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=26&duration=2600&pause=900&color=00E5A0&center=true&vCenter=true&width=880&lines=sneakywarwolf;Security+Analyst;VAPT+%2F+Web+%2F+Mobile+%2F+Network" alt="typing banner">
+</a>
 
-##  Certifications
-📚<img src="images_gif/loading.gif" width="25" height="25" alt="Loading">CRTE  📚 <img src="https://i.gifer.com/XVo6.gif" width="25" height="25" alt="Loading">eWPTXv2   📚 <img src="https://i.gifer.com/SVKl.gif" width="25" height="25" alt="Loading">CEH(Practical)
+<br>
 
-## Expertise
-💼 In my role as a security analyst, I specialize in:
-- Network security and vulnerability assessment
-- Web application security testing
-- Penetration testing
-- Mobile Application Pentest
-- Mutiple Onsite VAPT projects
+<a href="https://www.linkedin.com/in/sneakywarwolf"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>&nbsp;&nbsp;
+<a href="https://sneakywarwolf.github.io/sneakywarwolf/"><img src="https://img.shields.io/badge/Website-0d1117?style=for-the-badge&logo=github&logoColor=00e5a0" alt="Website"></a>
 
-## Projects 🚀
-🔍 I have worked on various projects that involve:
-- Conducting penetration tests to identify vulnerabilities
-- Performing security assessments and audits
-- Developing and implementing security protocols and measures
-- Providing Solutions to dedicated teams of developers during audits.
+<br><br>
 
-## Contact Me
-📬 If you have any questions, collaboration opportunities, or just want to say hi, feel free to reach out to me:
-👉<a href="https://www.linkedin.com/in/sneakywarwolf"><img src="https://img.shields.io/badge/LinkedIn-blue?style=flat-square&logo=linkedin" alt="LinkedIn">
-👉<a href="https://sneakywarwolf.github.io/sneakywarwolf/"><img src="https://img.shields.io/static/v1?label=Github&message=sneakywarwolf&color=blueviolet" alt="Github.io">
+<img src="https://komarev.com/ghpvc/?username=sneakywarwolf&style=flat&color=00e5a0&label=profile+views" alt="profile views">
 
-Let's work together to make the digital world a safer place! 🌐🔒
+</div>
 
-<!--
-<details>
-<p align="center">
-  <a href="https://github.com/sneakywarwolf">
-    <img src="http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=sneakywarwolf&theme=transparent" />
-  </a>
-  <a href="https://github.com/sneakywarwolf">
-    <img src="https://github-readme-streak-stats.herokuapp.com/?user=sneakywarwolf&hide_border=true&card_width=338&theme=transparent" />
-  </a>
-  <a href="https://github.com/sneakywarwolf">
-    <img src="http://github-profile-summary-cards.vercel.app/api/cards/stats?username=sneakywarwolf&theme=transparent" />
-  </a>
-  <a href="https://github.com/sneakywarwolf">
-    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=sneakywarwolf&langs_count=10&exclude_repo=&hide=jupyter%20notebook,vim%20script,cmake,makefile,batchfile,emacs%20lisp,css,html&layout=default&card_width=699&hide_border=true&theme=transparent" />
-  </a>
-</p>
-</details>
--->
+---
 
-<p align="center">
-  <a href="https://github.com/sneakywarwolf">
-    <img src="https://komarev.com/ghpvc/?username=sneakywarwolf&color=red&style=flat)" />
-  </a>
-</p>
+## This is me :)
+
+Hi, I'm a **security analyst** who likes finding what breaks before someone else does.
+I work on protecting systems, networks and data, and I'm always learning.
+
+- 🔍 **Penetration testing** across web, mobile and network targets
+- 🏢 **Multiple onsite VAPT projects**
+- 🤝 **Working with developer teams** during audits to turn findings into fixes
+
+<br>
+
+<div align="center">
+
+## certifications
+
+<img src="https://img.shields.io/badge/CRTE-0d1117?style=for-the-badge&logoColor=00e5a0" alt="CRTE">&nbsp;
+<img src="https://img.shields.io/badge/eWPTXv2-0d1117?style=for-the-badge&logoColor=00e5a0" alt="eWPTXv2">&nbsp;
+<img src="https://img.shields.io/badge/CEH_(Practical)-0d1117?style=for-the-badge&logoColor=00e5a0" alt="CEH Practical">
+
+</div>
+
+---
+
+<div align="center">
+
+## what I do
+
+| 🌐 Web | 📱 Mobile | 🛰️ Network | 🛠️ Process |
+| :---: | :---: | :---: | :---: |
+| Application security testing | Mobile application pentest | Network security & vulnerability assessment | Security assessments, audits & remediation guidance |
+
+</div>
+
+---
+
+<div align="center">
+
+## get in touch
+
+<a href="https://www.linkedin.com/in/sneakywarwolf"><img src="https://img.shields.io/badge/Say_hi_on-LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"></a>&nbsp;
+<a href="https://sneakywarwolf.github.io/sneakywarwolf/"><img src="https://img.shields.io/badge/Visit-sneakywarwolf.github.io-0d1117?style=flat-square&logo=github&logoColor=00e5a0" alt="Website"></a>
+
+<br>
+
+<sub>`Let's make the digital world a safer place`</sub>
+
+</div>
