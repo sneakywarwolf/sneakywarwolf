@@ -6,7 +6,13 @@
   <img src="assets/banner-dark.svg" width="100%" alt="profile.sh --live">
 </picture>
 
-<br><br>
+<br>
+
+<a href="https://sneakywarwolf.github.io">
+  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=26&duration=2600&pause=900&color=00E5A0&center=true&vCenter=true&width=880&lines=Nirmal+-+Security+Analyst+%26+Offensive+Security;Web+%2F+API+%2F+Mobile+%2F+Network+VAPT;Every+expert+was+once+a+beginner" alt="typing banner">
+</a>
+
+<br>
 
 <a href="https://sneakywarwolf.github.io"><img src="https://img.shields.io/badge/Blog-0d1117?style=for-the-badge&logo=githubpages&logoColor=00e5a0" alt="Blog"></a>&nbsp;&nbsp;
 <a href="https://www.linkedin.com/in/nirmalchak/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>&nbsp;&nbsp;
